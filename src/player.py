@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
             "y": 150
         }
 
-        self.image = pygame.image.load('assets/player.png')
+        self.image = pygame.transform.scale(pygame.image.load('assets/player.png'), (32, 32))
         self.rect = self.image.get_rect()
         
         self.topright = self.position['x'] + self.image.get_size()[0]
@@ -22,6 +22,7 @@ class Player(pygame.sprite.Sprite):
     def move_down(self) -> None: self.position["y"] += self.speed
     def move_left(self) -> None: self.position["x"] -= self.speed
     def move_right(self) -> None: self.position["x"] += self.speed
+
 
     def draw(self) -> None:
         self.screen.blit(self.image, (self.position["x"], self.position["y"]))
