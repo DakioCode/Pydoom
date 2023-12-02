@@ -19,11 +19,11 @@ class Game:
     def handle_inputs(self) -> None:
         pressed = pygame.key.get_pressed()
 
+        # Player's movement
         if pressed[pygame.K_UP]: self.player.move_up()
-        if pressed[pygame.K_DOWN]: self.player.move_down()
-        if pressed[pygame.K_LEFT]: self.player.move_left()
-        if pressed[pygame.K_RIGHT]: self.player.move_right()
-        if pressed[pygame.K_f]: print(f"{self.player.position} / {self.screen.get_size()}")
+        elif pressed[pygame.K_DOWN]: self.player.move_down()
+        elif pressed[pygame.K_LEFT]: self.player.move_left()
+        elif pressed[pygame.K_RIGHT]: self.player.move_right()
 
     def run(self) -> None:
         while self.running:
@@ -34,6 +34,7 @@ class Game:
             pygame.display.update()
             self.screen.fill((0, 0, 0))
 
+            # If the user quitted
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
